@@ -1,98 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Install Fish shell in Termux with neofetch for a customized Termux experience. Get features like auto-completion and syntax highlighting.">
-    <meta name="author" content="Rekt Developer">
-    <meta name="keywords" content="Termux, Fish shell, neofetch, script, Termux fish, shell customization, Linux">
-    <meta property="og:title" content="Termux Fish - Install Fish Shell in Termux">
-    <meta property="og:description" content="Install Fish shell with neofetch in Termux for enhanced productivity and appearance.">
-    <meta property="og:image" content="https://example.com/image.jpg"> <!-- Replace with your own image -->
-    <meta property="og:url" content="https://github.com/Rekt-Developer/termux-fish">
-    <meta name="twitter:title" content="Termux Fish - Install Fish Shell in Termux">
-    <meta name="twitter:description" content="Install Fish shell with neofetch in Termux for enhanced productivity and appearance.">
-    <meta name="twitter:image" content="https://example.com/image.jpg"> <!-- Replace with your own image -->
+    
+    <!-- Primary Meta Tags -->
+    <title>Termux Fish Shell | Ultimate Terminal Transformation</title>
+    <meta name="description" content="Transform your Termux terminal with Fish Shell. One-click installation, enhanced productivity, auto-completion, and stunning customization.">
+    <meta name="keywords" content="Termux, Fish Shell, terminal customization, shell replacement, Linux, Termux enhancement, coding productivity">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Termux Fish Shell | Revolutionize Your Terminal">
+    <meta property="og:description" content="Supercharge your Termux experience with Fish Shell. Powerful auto-completion, syntax highlighting, and intuitive interface.">
+    <meta property="og:url" content="https://rektdevelopers.github.io/termux-fish">
+    <meta property="og:image" content="https://rektdevelopers.github.io/images/termux-fish-og-banner.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="robots" content="index, follow">
-    <title>Termux Fish - Install Fish Shell in Termux</title>
+    <meta name="twitter:title" content="Termux Fish Shell | Terminal Productivity">
+    <meta name="twitter:description" content="One-click Fish Shell installation. Transform your Termux terminal with powerful features and stunning design.">
+    <meta name="twitter:image" content="https://rektdevelopers.github.io/images/termux-fish-twitter-card.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "Termux Fish Shell Installation",
+        "description": "Comprehensive guide to installing Fish Shell in Termux",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Update Termux",
+                "text": "Update Termux packages to ensure compatibility"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Install Fish Shell",
+                "text": "Install Fish Shell with one-line command"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Customize Terminal",
+                "text": "Enhance terminal with Neofetch and custom configurations"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="fish-shell-favicon.svg">
+    
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
-        header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
-        nav { background-color: #0077b5; padding: 10px 0; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 0 auto; }
-        h1 { color: #333; }
-        pre { background-color: #eaeaea; padding: 10px; border-radius: 5px; }
-        footer { text-align: center; padding: 10px; background-color: #333; color: white; margin-top: 30px; }
-        button { padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; }
-        .install-command { background-color: #f1f1f1; padding: 15px; border-radius: 5px; }
-        .install-command code { font-size: 16px; color: #333; background-color: #ddd; padding: 5px; }
-        .badge { display: inline-block; padding: 5px 10px; background-color: #28a745; color: white; border-radius: 3px; font-size: 14px; }
-        .promo { margin-top: 20px; }
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --background-color: #f4f7f6;
+            --text-color: #333;
+            --code-background: #f0f4f8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1rem;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+        }
+
+        .intro {
+            background-color: var(--code-background);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .code-section {
+            background-color: var(--code-background);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        pre {
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background-color: #f1f5f9;
+            padding: 1rem;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background-color: var(--code-background);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>🐟 Termux Fish Shell Installer</h1>
+            <p>Transform Your Terminal Experience in One Command</p>
+        </header>
 
-<header>
-    <h1>Termux Fish</h1>
-    <p>Install Fish Shell with Neofetch in Termux for a custom shell experience</p>
-</header>
+        <section class="intro">
+            <p>Upgrade your Termux terminal with Fish Shell - a modern, user-friendly shell that offers intelligent auto-completion, syntax highlighting, and a sleek interface.</p>
+        </section>
 
-<nav>
-    <a href="https://github.com/Rekt-Developer/termux-fish">Code</a>
-    <a href="https://github.com/Rekt-Developer/termux-fish/issues">Issues</a>
-    <a href="https://github.com/Rekt-Developer/termux-fish/pulls">Pull Requests</a>
-    <a href="https://github.com/Rekt-Developer/termux-fish/actions">Actions</a>
-</nav>
+        <section class="code-section">
+            <h2>🚀 Quick Installation</h2>
+            <pre><code>bash -c "$(curl -fsSL https://raw.githubusercontent.com/msn-05/termux-fish/main/install.sh)"</code></pre>
+        </section>
 
-<div class="container">
-    <section>
-        <h2>About Termux Fish</h2>
-        <p><strong>Termux Fish</strong> is a script to permanently install the Fish shell in Termux and enhance the appearance of your Termux homepage using Neofetch. With Fish shell, you get features like auto-completion, syntax highlighting, and many more. Here's how you can install it easily:</p>
-    </section>
+        <section class="features">
+            <div class="feature">
+                <h3>Auto-Completion</h3>
+                <p>Smart suggestions as you type commands</p>
+            </div>
+            <div class="feature">
+                <h3>Syntax Highlighting</h3>
+                <p>Real-time error detection and color coding</p>
+            </div>
+            <div class="feature">
+                <h3>Web-Based Configuration</h3>
+                <p>Easy GUI for shell customization</p>
+            </div>
+            <div class="feature">
+                <h3>Performance Optimized</h3>
+                <p>Lightweight and fast shell experience</p>
+            </div>
+        </section>
 
-    <section>
-        <h2>Installation Instructions</h2>
-        <div class="install-command">
-            <p>Run the following single command in your Termux terminal:</p>
-            <pre><code>pkg update && pkg upgrade -y && pkg install git -y && git clone https://github.com/msn-05/termux-fish.git && cd termux-fish && chmod +x script.sh && ./script.sh</code></pre>
-            <p>Once the script runs, exit Termux and reopen it to see the changes.</p>
+        <div class="button-group">
+            <a href="https://t.me/RektDevelopers" class="btn btn-primary" target="_blank">
+                Telegram Support
+            </a>
+            <a href="https://github.com/Rekt-Developer/termux-fish" class="btn btn-secondary" target="_blank">
+                GitHub Repository
+            </a>
         </div>
-    </section>
 
-    <section>
-        <h2>Steps to Install Manually</h2>
-        <ol>
-            <li>Update Termux: <code>pkg update && pkg upgrade -y</code></li>
-            <li>Install Git: <code>pkg install git -y</code></li>
-            <li>Clone the repository: <code>git clone https://github.com/msn-05/termux-fish.git</code></li>
-            <li>Change to the cloned directory and give executable permissions: <code>cd termux-fish && chmod +x script.sh</code></li>
-            <li>Run the installation script: <code>./script.sh</code></li>
-            <li>Exit Termux and enter again to see the changes.</li>
-        </ol>
-        <p>If you want to revert back to your previous shell, run this command: <code>chsh -s bash</code></p>
-    </section>
+        <section class="code-section">
+            <h2>📋 Manual Installation Steps</h2>
+            <pre><code>
+# Update Termux
+pkg update && pkg upgrade -y
 
-    <section>
-        <h2>Repository Details</h2>
-        <p><strong>Rekt-Developer/termux-fish</strong></p>
-        <p>Stars: 0 | Forks: 0 | Watching: 1 | Branches: 1 | Tags: 0</p>
-        <p>Private repository</p>
-    </section>
+# Install Dependencies
+pkg install git curl fish -y
 
-    <section class="promo">
-        <h2>Join the Community</h2>
-        <p>For help, updates, and discussions, join our Telegram group:</p>
-        <a href="https://t.me/RektDevelopers" target="_blank">
-            <button>Join Telegram</button>
-        </a>
-    </section>
-</div>
+# Clone Installation Repository
+git clone https://github.com/msn-05/termux-fish.git
 
-<footer>
-    <p>&copy; 2024 Rekt Developer. All Rights Reserved.</p>
-</footer>
+# Navigate and Run Installer
+cd termux-fish && chmod +x install.sh && ./install.sh
+            </code></pre>
+        </section>
 
+        <section class="code-section">
+            <h2>🔙 Revert Options</h2>
+            <pre><code>
+# Revert to Default Shell
+chsh -s bash
+
+# Uninstall Fish Shell
+pkg remove fish
+            </code></pre>
+        </section>
+
+        <footer class="footer">
+            <p>© 2024 Rekt Developers | Open Source Terminal Enhancement</p>
+            <p>Not affiliated with Fish Shell or Termux official projects</p>
+        </footer>
+    </div>
+
+    <script>
+        // Optional: Add clipboard copy functionality
+        document.querySelectorAll('pre code').forEach(codeBlock => {
+            codeBlock.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeBlock.textContent.trim())
+                    .then(() => alert('Copied to clipboard!'));
+            });
+        });
+    </script>
 </body>
 </html>
